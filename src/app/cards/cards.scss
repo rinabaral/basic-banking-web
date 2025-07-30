@@ -1,0 +1,147 @@
+@import '../styles/banking-theme.scss';
+
+.summary-stats {
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--light-gray);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .label {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .value {
+      font-weight: bold;
+      color: var(--primary-green);
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.card-item {
+  background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: var(--transition);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    .card-type-badge {
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      
+      &.credit {
+        background-color: var(--primary-yellow);
+        color: var(--dark-gray);
+      }
+      
+      &.debit {
+        background-color: var(--primary-green);
+        color: var(--white);
+      }
+    }
+    
+    .card-status {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      
+      &.status-active {
+        background-color: var(--light-green);
+        color: var(--dark-green);
+      }
+      
+      &.status-blocked {
+        background-color: #FFE6E6;
+        color: #D32F2F;
+      }
+    }
+  }
+  
+  .card-body {
+    .card-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--dark-gray);
+      margin-bottom: 8px;
+    }
+    
+    .card-number {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    
+    .card-details {
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--light-gray);
+        
+        &:last-child {
+          border-bottom: none;
+        }
+        
+        .label {
+          font-weight: 500;
+          color: var(--gray);
+        }
+        
+        .value {
+          font-weight: 600;
+          color: var(--dark-gray);
+        }
+      }
+    }
+  }
+  
+  .card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    
+    .btn {
+      flex: 1;
+    }
+  }
+} 

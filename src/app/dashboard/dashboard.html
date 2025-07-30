@@ -1,3 +1,76 @@
-<div class="dashboard-container">
-  <h1>Welcome to the Dashboard!</h1>
+<app-navigation></app-navigation>
+
+<div class="main-content">
+  <h1>Welcome to Your Banking Dashboard</h1>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Account Overview</h2>
+      <div class="balance-display">
+        <div class="balance-amount">${{ dashboardStats.totalBalance | number:'1.2-2' }}</div>
+        <div class="balance-label">Total Balance</div>
+      </div>
+      <div class="balance-stats">
+        <div class="stat-item">
+          <span class="label">Monthly Income:</span>
+          <span class="value positive">${{ dashboardStats.monthlyIncome | number:'1.2-2' }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Monthly Expenses:</span>
+          <span class="value negative">${{ dashboardStats.monthlyExpenses | number:'1.2-2' }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Savings Rate:</span>
+          <span class="value">{{ dashboardStats.savingsRate }}%</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="actions-grid">
+        <button class="action-button" *ngFor="let action of quickActions" (click)="performAction(action.action)">
+          <div class="action-icon">{{ action.icon }}</div>
+          <div class="action-title">{{ action.title }}</div>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Recent Activity</h2>
+      <div class="activity-list">
+        <div class="activity-item" *ngFor="let activity of recentActivity">
+          <div class="activity-info">
+            <div class="activity-description">{{ activity.description }}</div>
+            <div class="activity-time">{{ activity.time }}</div>
+          </div>
+          <div class="activity-amount" [class.credit]="activity.type === 'Credit'" [class.debit]="activity.type === 'Debit'">
+            {{ activity.amount > 0 ? '+' : '' }}{{ activity.amount | number:'1.2-2' }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Account Summary</h2>
+      <div class="summary-stats">
+        <div class="summary-item">
+          <div class="summary-icon">📊</div>
+          <div class="summary-info">
+            <div class="summary-label">Recent Transactions</div>
+            <div class="summary-value">{{ dashboardStats.recentTransactions }}</div>
+          </div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-icon">💳</div>
+          <div class="summary-info">
+            <div class="summary-label">Active Cards</div>
+            <div class="summary-value">{{ dashboardStats.activeCards }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

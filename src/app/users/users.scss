@@ -1,0 +1,161 @@
+@import '../styles/banking-theme.scss';
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    text-align: center;
+    
+    .label {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+    
+    .value {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary-green);
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+.users-table {
+  .table-header {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr 1fr 1fr 1.5fr 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 2px solid var(--light-gray);
+    font-weight: 600;
+    color: var(--dark-gray);
+  }
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr 1fr 1fr 1.5fr 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    align-items: center;
+    
+    &:hover {
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .table-cell {
+    &.name {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary-yellow);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: var(--dark-gray);
+      }
+    }
+    
+    &.email {
+      color: var(--primary-green);
+      font-weight: 500;
+    }
+    
+    &.phone {
+      color: var(--gray);
+    }
+    
+    &.account-type {
+      .type-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        
+        &.type-premium {
+          background-color: var(--primary-yellow);
+          color: var(--dark-gray);
+        }
+        
+        &.type-business {
+          background-color: var(--primary-green);
+          color: var(--white);
+        }
+        
+        &.type-savings {
+          background-color: var(--light-green);
+          color: var(--dark-green);
+        }
+        
+        &.type-checking {
+          background-color: var(--light-gray);
+          color: var(--dark-gray);
+        }
+      }
+    }
+    
+    &.status {
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        
+        &.status-active {
+          background-color: var(--light-green);
+          color: var(--dark-green);
+        }
+        
+        &.status-suspended {
+          background-color: #FFE6E6;
+          color: #D32F2F;
+        }
+      }
+    }
+    
+    &.last-login {
+      color: var(--gray);
+      font-size: 14px;
+    }
+    
+    &.actions {
+      display: flex;
+      gap: 8px;
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+  }
+} 

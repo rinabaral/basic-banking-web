@@ -1,0 +1,53 @@
+<app-navigation></app-navigation>
+
+<div class="main-content">
+  <h1>Account Overview</h1>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Account Information</h2>
+      <div class="account-details">
+        <div class="detail-item">
+          <span class="label">Account Number:</span>
+          <span class="value">{{ accountInfo.accountNumber }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Account Type:</span>
+          <span class="value">{{ accountInfo.accountType }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Balance:</span>
+          <span class="value balance">{{ accountInfo.currency }} {{ accountInfo.balance | number:'1.2-2' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Status:</span>
+          <span class="value status-active">{{ accountInfo.status }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="btn btn-primary">Transfer Money</button>
+        <button class="btn btn-success">Pay Bills</button>
+        <button class="btn btn-outline">Download Statement</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Recent Transactions</h2>
+    <div class="transactions-list">
+      <div class="transaction-item" *ngFor="let transaction of recentTransactions">
+        <div class="transaction-info">
+          <div class="transaction-description">{{ transaction.description }}</div>
+          <div class="transaction-date">{{ transaction.date }}</div>
+        </div>
+        <div class="transaction-amount" [class.credit]="transaction.type === 'Credit'" [class.debit]="transaction.type === 'Debit'">
+          {{ transaction.amount > 0 ? '+' : '' }}{{ transaction.amount | number:'1.2-2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

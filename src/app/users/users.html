@@ -1,0 +1,71 @@
+<div class="main-content">
+  <h1>User Management</h1>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="btn btn-primary">Add New User</button>
+        <button class="btn btn-success">Bulk Operations</button>
+        <button class="btn btn-outline">Export Users</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>User Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="label">Total Users:</span>
+          <span class="value">{{ users.length }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Active Users:</span>
+          <span class="value">{{ activeUsersCount }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Suspended:</span>
+          <span class="value">{{ suspendedUsersCount }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>User List</h2>
+    <div class="users-table">
+      <div class="table-header">
+        <div class="header-cell">Name</div>
+        <div class="header-cell">Email</div>
+        <div class="header-cell">Phone</div>
+        <div class="header-cell">Account Type</div>
+        <div class="header-cell">Status</div>
+        <div class="header-cell">Last Login</div>
+        <div class="header-cell">Actions</div>
+      </div>
+      
+      <div class="table-row" *ngFor="let user of users">
+        <div class="table-cell name">
+          <div class="user-avatar">{{ user.name.charAt(0) }}</div>
+          <span>{{ user.name }}</span>
+        </div>
+        <div class="table-cell email">{{ user.email }}</div>
+        <div class="table-cell phone">{{ user.phone }}</div>
+        <div class="table-cell account-type">
+          <span class="type-badge" [class]="getAccountTypeClass(user.accountType)">
+            {{ user.accountType }}
+          </span>
+        </div>
+        <div class="table-cell status">
+          <span class="status-badge" [class]="getStatusClass(user.status)">
+            {{ user.status }}
+          </span>
+        </div>
+        <div class="table-cell last-login">{{ user.lastLogin }}</div>
+        <div class="table-cell actions">
+          <button class="btn btn-outline">Edit</button>
+          <button class="btn btn-primary">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

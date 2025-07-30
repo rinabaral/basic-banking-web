@@ -1,0 +1,56 @@
+<nav class="nav-container" *ngIf="shouldShowNavigation()">
+  <div class="nav-content">
+    <div class="logo">
+      <div class="logo-icon">🏦</div>
+      <span>SecureBank</span>
+    </div>
+    
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a routerLink="/dashboard" 
+           class="nav-link" 
+           [class.active]="isActive('/dashboard')">
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/account" 
+           class="nav-link" 
+           [class.active]="isActive('/account')">
+          Account
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/transactions" 
+           class="nav-link" 
+           [class.active]="isActive('/transactions')">
+          Transactions
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/cards" 
+           class="nav-link" 
+           [class.active]="isActive('/cards')">
+          Cards
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/users" 
+           class="nav-link" 
+           [class.active]="isActive('/users')">
+          Users
+        </a>
+      </li>
+    </ul>
+    
+    <div class="user-menu">
+      <div class="user-info">
+        <span>👤</span>
+        <span>{{ username }}</span>
+      </div>
+      <button class="btn btn-outline" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav> 

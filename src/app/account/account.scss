@@ -1,0 +1,85 @@
+@import '../styles/banking-theme.scss';
+
+.account-details {
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--light-gray);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .label {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .value {
+      font-weight: 500;
+      
+      &.balance {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--primary-green);
+      }
+      
+      &.status-active {
+        color: var(--primary-green);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+.transactions-list {
+  .transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .transaction-info {
+      .transaction-description {
+        font-weight: 600;
+        color: var(--dark-gray);
+        margin-bottom: 4px;
+      }
+      
+      .transaction-date {
+        font-size: 14px;
+        color: var(--gray);
+      }
+    }
+    
+    .transaction-amount {
+      font-weight: bold;
+      font-size: 16px;
+      
+      &.credit {
+        color: var(--primary-green);
+      }
+      
+      &.debit {
+        color: #D32F2F;
+      }
+    }
+  }
+} 

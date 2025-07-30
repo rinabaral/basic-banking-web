@@ -1,0 +1,108 @@
+@import '../styles/banking-theme.scss';
+
+.filter-controls {
+  margin-bottom: 20px;
+}
+
+.summary {
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    
+    .label {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .value {
+      font-weight: bold;
+      font-size: 18px;
+      
+      &.positive {
+        color: var(--primary-green);
+      }
+      
+      &.negative {
+        color: #D32F2F;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+.transactions-table {
+  .table-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 2px solid var(--light-gray);
+    font-weight: 600;
+    color: var(--dark-gray);
+  }
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    align-items: center;
+    
+    &:hover {
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .table-cell {
+    &.date {
+      font-weight: 500;
+      color: var(--gray);
+    }
+    
+    &.description {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    &.category {
+      .category-badge {
+        background-color: var(--light-green);
+        color: var(--dark-green);
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+    
+    &.amount {
+      font-weight: bold;
+      text-align: right;
+      
+      &.credit {
+        color: var(--primary-green);
+      }
+      
+      &.debit {
+        color: #D32F2F;
+      }
+    }
+  }
+} 

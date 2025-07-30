@@ -1,0 +1,58 @@
+<app-navigation></app-navigation>
+
+<div class="main-content">
+  <h1>Transaction History</h1>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Filter Transactions</h2>
+      <div class="filter-controls">
+        <select class="form-input" [(ngModel)]="selectedFilter">
+          <option value="all">All Transactions</option>
+          <option value="Credit">Credits Only</option>
+          <option value="Debit">Debits Only</option>
+        </select>
+      </div>
+      <div class="summary">
+        <div class="summary-item">
+          <span class="label">Total Amount:</span>
+          <span class="value" [class.positive]="getTotalAmount() > 0" [class.negative]="getTotalAmount() < 0">
+            ${{ getTotalAmount() | number:'1.2-2' }}
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="btn btn-primary">Export Statement</button>
+        <button class="btn btn-success">Download PDF</button>
+        <button class="btn btn-outline">Print Statement</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Transaction List</h2>
+    <div class="transactions-table">
+      <div class="table-header">
+        <div class="header-cell">Date</div>
+        <div class="header-cell">Description</div>
+        <div class="header-cell">Category</div>
+        <div class="header-cell">Amount</div>
+      </div>
+      
+      <div class="table-row" *ngFor="let transaction of getFilteredTransactions()">
+        <div class="table-cell date">{{ transaction.date }}</div>
+        <div class="table-cell description">{{ transaction.description }}</div>
+        <div class="table-cell category">
+          <span class="category-badge">{{ transaction.category }}</span>
+        </div>
+        <div class="table-cell amount" [class.credit]="transaction.type === 'Credit'" [class.debit]="transaction.type === 'Debit'">
+          {{ transaction.amount > 0 ? '+' : '' }}{{ transaction.amount | number:'1.2-2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

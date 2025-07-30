@@ -1,0 +1,65 @@
+<div class="main-content">
+  <h1>My Cards</h1>
+  
+  <div class="dashboard-grid">
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="action-buttons">
+        <button class="btn btn-primary">Request New Card</button>
+        <button class="btn btn-success">Block Card</button>
+        <button class="btn btn-outline">Report Lost Card</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Card Summary</h2>
+      <div class="summary-stats">
+        <div class="stat-item">
+          <span class="label">Active Cards:</span>
+          <span class="value">{{ activeCardsCount }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Total Credit Limit:</span>
+          <span class="value">${{ totalCreditLimit | number }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cards-grid">
+    <div class="card-item" *ngFor="let card of cards">
+      <div class="card-header">
+        <div class="card-type-badge" [class.credit]="card.cardType === 'Credit'" [class.debit]="card.cardType === 'Debit'">
+          {{ card.cardType }}
+        </div>
+        <div class="card-status" [class]="getCardStatusClass(card.status)">
+          {{ card.status }}
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <h3 class="card-name">{{ card.cardName }}</h3>
+        <div class="card-number">{{ card.cardNumber }}</div>
+        <div class="card-details">
+          <div class="detail-item">
+            <span class="label">Expires:</span>
+            <span class="value">{{ card.expiryDate }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Balance:</span>
+            <span class="value">${{ card.balance | number:'1.2-2' }}</span>
+          </div>
+          <div class="detail-item" *ngIf="card.cardType === 'Credit'">
+            <span class="label">Limit:</span>
+            <span class="value">${{ card.limit | number }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-actions">
+        <button class="btn btn-outline">View Details</button>
+        <button class="btn btn-primary">Manage</button>
+      </div>
+    </div>
+  </div>
+</div> 
